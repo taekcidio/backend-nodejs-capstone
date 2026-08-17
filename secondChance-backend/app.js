@@ -21,6 +21,7 @@ connectToDatabase()
 app.use(express.json());
 
 // Route files
+const authRoutes = require('./routes/authRoutes');
 const secondChanceItemsRoutes = require('./routes/secondChanceItemsRoutes');
 const searchRoutes = require('./routes/searchRoutes');
 
@@ -30,6 +31,7 @@ const logger = require('./logger');
 app.use(pinoHttp({ logger }));
 
 // Use Routes
+app.use('/api/auth', authRoutes);
 app.use('/api/secondchance/items', secondChanceItemsRoutes);
 app.use('/api/secondchance/search', searchRoutes);
 
